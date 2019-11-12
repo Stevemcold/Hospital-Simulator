@@ -1,0 +1,4 @@
+Build artifact from the IDE (with intelliJ, set a .jar artifact from File -> Project Structure -> Artifacts, without specifying the main class; then from Build -> Build Artifacts), after opening the project folder.
+
+From the command prompt/console get to the directory "Hospital-Simulator\out\artifacts\Hospital_Simulator_jar" (where the artifact should be built by default) and execute "java -jar Hospital-Simulator.jar [args]",
+or directly "java -jar relative_path_to_Hospital-Simulator.jar [args]".
