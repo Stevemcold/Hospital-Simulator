@@ -1,0 +1,4 @@
+A .jar file is already present in path: "Hospital-Simulator\out\artifacts\Hospital_Simulator_jar\Hospital-Simulator.jar";
+
+From command prompt/console get to the directory "Hospital-Simulator\out\artifacts\Hospital_Simulator_jar" and execute "java -jar Hospital-Simulator.jar [args]",
+or directly "java -jar relative_path_to_Hospital-Simulator.jar [args]".
