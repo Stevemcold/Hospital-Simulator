@@ -1,14 +1,22 @@
 package com.hospital.Application;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
 
     public static void main(String[] args) {
+
+
+        try (InputStream input = new FileInputStream("../resources/app.properties")) {
+            Properties properties = new Properties();
+            properties.load(input);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
 
         String[] parsedConditions = {};
         String[] parsedDrugs = {};

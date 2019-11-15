@@ -1,15 +1,11 @@
 package com.hospital.Application;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
 public class Antibiotic implements Drug {
-    String propertiesPath = "../app.properties";
-    Properties appProperties = new Properties();
-
-    public Properties getAppProperties() {
-        return appProperties;
-    }
 
     public Antibiotic(){
     }
