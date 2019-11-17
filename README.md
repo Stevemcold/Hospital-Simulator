@@ -79,9 +79,6 @@ Examples
 
 1. Input: “D,D” “”
 Output: “F:0,H:0,D:0,T:0,X:2” (diabetic patients die without insulin)
-$ java -cp hospital-simulator.jar com.edgelab.hospital.Application D,D
-F:0,H:0,D:0,T:0,X:2
+
 2. Input: “F” “P”
 Output: “F:0,H:1,D:0,T:0,X:0” (paracetamol cures fever)
-$ java -cp hospital-simulator.jar com.edgelab.hospital.Application F P
-F:0,H:1,D:0,T:0,X:0
