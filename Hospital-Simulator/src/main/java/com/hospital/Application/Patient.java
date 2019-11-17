@@ -4,43 +4,31 @@ import java.util.List;
 import java.util.Random;
 
 public class Patient {
-    private Condition condition;
+    private String condition;
 
-    public Patient(Condition condition){
+    public Patient(String condition){
         this.condition = condition;
     }
 
-    public Patient(String parsedCondition){
-        for(Condition condition : Condition.values()) {
-          if(parsedCondition.equals(condition.initial())) {
-              this.condition = condition;
-              break;
-          }
-        }
-        if(this.condition==null) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public Condition getCondition() {
+    public String getCondition() {
         return condition;
     }
 
-    private Condition noodleMiracle(){
+    private String noodleMiracle(){
         int result = new Random().nextInt(1000000) + 1;
         if(result==1)
-            return Condition.HEALTHY;
-        else return Condition.DEAD;
+            return "H";
+        else return "X";
     }
 
     public void treat(List<Drug> drugs){
-        Condition tmpCondition = this.condition;
+        String tmpCondition = this.condition;
         for(Drug drug : drugs){
             tmpCondition = drug.collateralEffect(drugs, drug.apply(tmpCondition));
         }
-        if(tmpCondition == Condition.INSULINDIABETES) {
-            tmpCondition = Condition.DIABETES;
-        } else if(tmpCondition == Condition.DIABETES || tmpCondition == Condition.DEAD) {
+        if(tmpCondition.equals("ID")) {
+            tmpCondition = "DD";
+        } else if(tmpCondition.equals("D") || tmpCondition.equals("X")) {
             tmpCondition = noodleMiracle();
         }
 

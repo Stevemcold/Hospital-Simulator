@@ -16,18 +16,18 @@ public class Aspirin implements Drug {
     }
 
     @Override
-    public Condition apply(Condition condition){
-            if(condition == Condition.FEVER)
-                return Condition.HEALTHY;
+    public String apply(String condition){
+            if(condition.equals("F"))
+                return "H";
             else
                 return condition;
     }
 
     @Override
-    public Condition collateralEffect(List<Drug> drugs, Condition condition) {
+    public String collateralEffect(List<Drug> drugs, String condition) {
         for(Drug drug : drugs){
             if (drug.getInitial().equals("P")) {
-                condition = Condition.DEAD;
+                condition = "X";
                 break;
             }
         }

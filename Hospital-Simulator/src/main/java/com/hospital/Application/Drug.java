@@ -17,12 +17,12 @@ public interface Drug {
             }
 
             @Override
-            public Condition apply(Condition condition) {
+            public String apply(String condition) {
                 return null;
             }
 
             @Override
-            public Condition collateralEffect(List<Drug> drugs, Condition condition) {
+            public String collateralEffect(List<Drug> drugs, String condition) {
                 return null;
             }
         };
@@ -42,6 +42,6 @@ public interface Drug {
 
     String getName();
     String getInitial();
-    Condition apply(Condition condition);
-    Condition collateralEffect(List<Drug> drugs, Condition condition);
+    String apply(String condition);
+    String collateralEffect(List<Drug> drugs, String condition);
 }

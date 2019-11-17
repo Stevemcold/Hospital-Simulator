@@ -16,19 +16,19 @@ public class Insulin implements Drug {
     }
 
     @Override
-    public Condition apply(Condition condition){
-        if(condition == Condition.DIABETES)
-            return Condition.INSULINDIABETES;
+    public String apply(String condition){
+        if(condition.equals("D"))
+            return "ID";
         else
             return condition;
     }
 
     @Override
-    public Condition collateralEffect(List<Drug> drugs, Condition condition) {
+    public String collateralEffect(List<Drug> drugs, String condition) {
         for(Drug drug : drugs){
             if (drug.getInitial().equals("An")) {
-                if(condition == Condition.HEALTHY)
-                    condition = Condition.FEVER;
+                if(condition.equals("H"))
+                    condition = "F";
                 break;
             }
         }

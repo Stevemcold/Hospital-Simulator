@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 public class Antibiotic implements Drug {
 
@@ -19,19 +20,19 @@ public class Antibiotic implements Drug {
     }
 
     @Override
-    public Condition apply(Condition condition){
-        if(condition == Condition.TUBERCULOSIS)
-            return Condition.HEALTHY;
+    public String apply(String condition){
+        if(condition.equals("T"))
+            return "H";
         else
             return condition;
     }
 
     @Override
-    public Condition collateralEffect(List<Drug> drugs, Condition condition) {
+    public String collateralEffect(List<Drug> drugs, String condition) {
         for(Drug drug : drugs){
             if (drug.getInitial().equals("I")) {
-                if(condition == Condition.HEALTHY)
-                    condition = Condition.FEVER;
+                if(condition.equals("H"))
+                    condition = "F";
                 break;
             }
         }
