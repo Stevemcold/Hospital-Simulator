@@ -1,9 +1,8 @@
 package com.hospital.Application;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -11,14 +10,14 @@ public class Main {
     public static void main(String[] args) {
         SetUp setUp = SetUp.getInstance();
         setUp.setArgs(args);
-        String[] parsedConditions = setUp.getParsedConditions();
+        List<Condition> conditionsList = setUp.getParsedConditions();
         String[] parsedDrugs = setUp.getParsedDrugs();
-        Map<String, Integer> treatedConditions = setUp.getTreatedConditions();
+        Map<Condition, Integer> treatedConditions = setUp.getTreatedConditions();
         List<Patient> patients = new ArrayList<>();
         List<Drug> drugs = new ArrayList<>();
 
         //create patients from the list of given conditions
-        for(String condition : parsedConditions) {
+        for(Condition condition : conditionsList) {
             patients.add(new Patient(condition));
         }
         //create drugs from the list of given drugs

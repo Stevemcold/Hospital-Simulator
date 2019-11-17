@@ -1,10 +1,6 @@
 package com.hospital.Application;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-import java.util.Properties;
-import java.util.Set;
 
 public class Antibiotic implements Drug {
 
@@ -20,19 +16,19 @@ public class Antibiotic implements Drug {
     }
 
     @Override
-    public String apply(String condition){
-        if(condition.equals("T"))
-            return "H";
+    public Condition apply(Condition condition){
+        if(condition.getInitial().equals("T"))
+            return new Condition("H");
         else
             return condition;
     }
 
     @Override
-    public String collateralEffect(List<Drug> drugs, String condition) {
+    public Condition collateralEffect(List<Drug> drugs, Condition condition) {
         for(Drug drug : drugs){
             if (drug.getInitial().equals("I")) {
-                if(condition.equals("H"))
-                    condition = "F";
+                if(condition.getInitial().equals("H"))
+                    condition = new Condition("F");
                 break;
             }
         }

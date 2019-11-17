@@ -4,30 +4,30 @@ import java.util.List;
 import java.util.Random;
 
 public class Patient {
-    private String condition;
+    private Condition condition;
 
-    public Patient(String condition){
+    public Patient(Condition condition){
         this.condition = condition;
     }
 
-    public String getCondition() {
+    public Condition getCondition() {
         return condition;
     }
 
-    private String noodleMiracle(){
+    private Condition noodleMiracle(){
         int result = new Random().nextInt(1000000) + 1;
         if(result==1)
-            return "H";
-        else return "X";
+            return new Condition("H");
+        else return new Condition("X");
     }
 
     public void treat(List<Drug> drugs){
-        String tmpCondition = this.condition;
+        Condition tmpCondition = this.condition;
         for(Drug drug : drugs){
             tmpCondition = drug.collateralEffect(drugs, drug.apply(tmpCondition));
         }
-        if(tmpCondition.equals("ID")) {
-            tmpCondition = "DD";
+        if(tmpCondition.getInitial().equals("ID")) {
+            tmpCondition = new Condition("D");
         } else if(tmpCondition.equals("D") || tmpCondition.equals("X")) {
             tmpCondition = noodleMiracle();
         }

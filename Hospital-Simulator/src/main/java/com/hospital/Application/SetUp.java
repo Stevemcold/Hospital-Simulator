@@ -7,12 +7,12 @@ import java.util.*;
 
 public class SetUp {
     public static Properties properties = new Properties();
-    public static List<String> conditions = new ArrayList<>();
-    private String[] parsedConditions = {};
+    public static List<Condition> conditions = new ArrayList<>();
+    private List<Condition> parsedConditions = new ArrayList<>();
     private String[] parsedDrugs = {};
-    private Map<String, Integer> treatedConditions = new HashMap<>();
+    private Map<Condition, Integer> treatedConditions = new HashMap<>();
 
-    public String[] getParsedConditions() {
+    public List<Condition> getParsedConditions() {
         return parsedConditions;
     }
 
@@ -20,7 +20,7 @@ public class SetUp {
         return parsedDrugs;
     }
 
-    public Map<String, Integer> getTreatedConditions() {
+    public Map<Condition, Integer> getTreatedConditions() {
         return treatedConditions;
     }
 
@@ -30,7 +30,7 @@ public class SetUp {
             properties.load(input);
             properties.forEach((k,v) -> {
                 if(k.toString().contains("conditions")){
-                    conditions.add(v.toString());
+                    conditions.add(new Condition(v.toString()));
                 }
             });
         } catch (
@@ -40,15 +40,20 @@ public class SetUp {
     }
 
     public void setArgs(String[] args){
+        String[] inputConditions = {};
         if(args.length>0){
-            this.parsedConditions = args[0].split(",");
+            inputConditions = args[0].split(",");
         }
         if(args.length>1) {
             this.parsedDrugs = args[1].split(",");
         }
-        for(String condition : parsedConditions) {
-            if(!condition.equals("ID"))
-                treatedConditions.putIfAbsent(condition, 0);
+        for(String condition : inputConditions) {
+            if(!condition.equals("ID")){
+                this.parsedConditions.add(new Condition(condition));
+            }
+        }
+        for(Condition cond : this.parsedConditions){
+            treatedConditions.putIfAbsent(cond, 0);
         }
     }
 
